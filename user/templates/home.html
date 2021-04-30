@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>MakeUP App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body style="background-color:#4DB6AC;">
+
+<br>
+{% block content %}
+<div class="card-columns">
+    {% for product in product_store %}
+    <div class="card" style="width: 18rem; height:24rem">
+   <img class="card-img-top" src="{{ product.cover.url }}" style="width:18rem; height:12rem">
+  <div class="card-body">
+    <h5 class="card-title">{{ product.brand }}</h5>
+    <p class="card-text">{{ product.name }}</p>
+   <div class="card-footer bg-transparent border-dark">
+   <p class="card-title">{{product.price}}</p>
+   <center>
+       <a href="update/{{product.id}}" class="btn btn-warning" id = '{{product.id}}'>edit</a>
+       <a href="delete/{{product.id}}" class="btn btn-danger" id = '{{product.id}}'>delete</a>
+    </center>
+    </div>
+  </div>
+</div>
+    {% endfor %}
+</div>
+{% endblock %}
+</body>
+</html>

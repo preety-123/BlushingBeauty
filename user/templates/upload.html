@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload</title>
+
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;
+background-image: url({% static 'images/upload.jpg' %});
+}
+td{
+width:100%;
+padding:12px 20px;
+margin:8px 0;
+display:inline-block;
+}
+h1{
+color: white;
+}
+
+button{
+background-color:black;
+color:white;
+padding:15px 21px;
+margin:8px 0;
+border-radius:8px;
+cursor:pointer;
+}
+</style>
+</head>
+<body>
+{% block content %}
+
+    <center>
+    <h1>Upload Store</h1>
+        <div class="center">
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <!--<table>{{upload_form.as_table}}</table>-->
+    <table class='w-50 table table-light' style="border-radius: 10px;">
+    {% for field in upload_form %}
+    <tr>
+        <th>{{field.label}}</th>
+        <td>{{field}}</td>
+    </tr>
+    {%endfor%}
+    </table>
+    <button type="submit" class="btn btn-lg btn-warning">Upload</button>
+    </form>
+
+</div>
+    </center>
+{% endblock %}
+</body>
+</html>

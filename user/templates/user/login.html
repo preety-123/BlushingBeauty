@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+{%load static%}
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;
+background-image: url({% static 'images/loginbackground1.jpg' %});
+
+
+}
+
+
+input[type=text], input[type=password] {
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.center{
+  margin: auto;
+  width: 40%;
+  border: 3px solid #ff6699 ;
+  padding: 10px;
+  background-color:#ff6699;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  font-size:15px
+  }
+
+button:hover {
+  opacity: 0.8;
+}
+
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 30%;
+  border-radius: 15%;
+}
+
+.container {
+  padding: 16px;
+
+}
+.container input{
+font-size=16px;
+width:350px;
+padding:15px 10px;
+border:1;
+outline:black;
+border-radius:5px;
+}
+
+span.psw {
+    padding-top: 16px;
+    font-size:13px
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+
+}
+</style>
+</head>
+<body>
+
+<center><h2>Login Form</h2></center>
+</br>
+<div class="center">
+<form  method="post">
+    {%csrf_token%}
+  <div class="imgcontainer">
+    <img src="{%static "images/loginbackground1.jpg" %}" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    <left>
+    <label for="uname"><b>Username</b></label>
+      {{form.username}}
+    <br><label for="psw"><b>Password</b></label>
+      {{form.password}}
+    </left>
+    </br>
+
+    <center> <button type="submit">Login</button></center>
+
+
+
+    <center>
+    <span class="psw">Don't have account, <a href="{% url 'register' %}">Sign Up</a></span>
+
+    </center>
+    </div>
+</form>
+</div>
+</body>
+</html>
